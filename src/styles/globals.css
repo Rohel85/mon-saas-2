@@ -1,0 +1,160 @@
+/* src/app/globals.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #0a0a0f;
+  --bg2: #12121a;
+  --bg3: #1a1a28;
+  --accent: #7c3aed;
+  --accent2: #a855f7;
+  --green: #22c55e;
+  --red: #ef4444;
+  --amber: #f59e0b;
+  --border: #2a2a3d;
+  --text: #e2e0ff;
+  --muted: #7070a0;
+}
+
+@layer base {
+  * { box-sizing: border-box; }
+
+  body {
+    @apply bg-[#0a0a0f] text-[#e2e0ff] antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: #0a0a0f; }
+  ::-webkit-scrollbar-thumb { background: #2a2a3d; border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: #7c3aed; }
+}
+
+@layer components {
+  /* ─── Terminal ─────────────────────────────────── */
+  .terminal {
+    @apply bg-[#070711] border border-[#2a2a3d] rounded-xl p-4 font-mono text-xs;
+  }
+
+  /* ─── Cards ────────────────────────────────────── */
+  .card {
+    @apply bg-[#12121a] border border-[#2a2a3d] rounded-xl p-5;
+  }
+
+  .card-hover {
+    @apply card transition-all duration-200 hover:border-purple-500/50 hover:-translate-y-0.5;
+  }
+
+  /* ─── Buttons ──────────────────────────────────── */
+  .btn-primary {
+    @apply bg-gradient-to-r from-violet-600 to-purple-500 text-white font-semibold 
+           px-5 py-2.5 rounded-lg text-sm transition-all duration-200 
+           hover:opacity-90 hover:scale-[1.02] active:scale-[0.98]
+           disabled:opacity-40 disabled:cursor-not-allowed disabled:transform-none;
+  }
+
+  .btn-secondary {
+    @apply bg-[#1a1a28] border border-[#2a2a3d] text-[#e2e0ff] font-medium
+           px-5 py-2.5 rounded-lg text-sm transition-all duration-200
+           hover:border-purple-500/50 hover:bg-[#1e1e30]
+           active:scale-[0.98];
+  }
+
+  .btn-ghost {
+    @apply bg-transparent text-[#7070a0] font-medium
+           px-4 py-2 rounded-lg text-sm transition-all duration-200
+           hover:text-[#e2e0ff] hover:bg-[#1a1a28];
+  }
+
+  .btn-danger {
+    @apply bg-red-500/10 border border-red-500/30 text-red-400
+           px-4 py-2 rounded-lg text-sm transition-all
+           hover:bg-red-500/20;
+  }
+
+  /* ─── Inputs ───────────────────────────────────── */
+  .input {
+    @apply w-full bg-[#070711] border border-[#2a2a3d] rounded-lg text-[#e2e0ff]
+           px-3 py-2.5 text-sm outline-none transition-all
+           placeholder:text-[#7070a0]
+           focus:border-purple-500 focus:ring-1 focus:ring-purple-500/20;
+  }
+
+  .input-error {
+    @apply border-red-500 focus:border-red-500 focus:ring-red-500/20;
+  }
+
+  .label {
+    @apply block text-xs text-[#7070a0] mb-1.5 font-medium;
+  }
+
+  /* ─── Badges ───────────────────────────────────── */
+  .badge {
+    @apply inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold;
+  }
+
+  .badge-free { @apply bg-purple-500/20 text-purple-300; }
+  .badge-pro  { @apply bg-green-500/20 text-green-400; }
+  .badge-boss { @apply bg-amber-500/20 text-amber-400; }
+
+  /* ─── Log lines ────────────────────────────────── */
+  .log-line    { @apply text-xs py-0.5 leading-relaxed; }
+  .log-success { @apply text-green-400; }
+  .log-info    { @apply text-blue-400; }
+  .log-warn    { @apply text-amber-400; }
+  .log-error   { @apply text-red-400; }
+
+  /* ─── Gradient text ────────────────────────────── */
+  .gradient-text {
+    @apply bg-gradient-to-r from-violet-400 to-purple-300 bg-clip-text text-transparent;
+  }
+
+  /* ─── Stat cards ───────────────────────────────── */
+  .stat-card {
+    @apply bg-[#0f0f1f] border border-[#2a2a3d] rounded-lg p-4 text-center;
+  }
+
+  /* ─── Nav ──────────────────────────────────────── */
+  .nav-link {
+    @apply text-sm text-[#7070a0] hover:text-[#e2e0ff] transition-colors px-3 py-1.5 rounded-lg hover:bg-white/5;
+  }
+
+  .nav-link-active {
+    @apply text-sm text-[#e2e0ff] bg-white/5 px-3 py-1.5 rounded-lg;
+  }
+}
+
+/* ─── Animations ─────────────────────────────────────────── */
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(124, 58, 237, 0.4); }
+  50% { box-shadow: 0 0 0 8px rgba(124, 58, 237, 0); }
+}
+
+@keyframes typing {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-8px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.animate-fade-up { animation: fadeUp 0.4s ease forwards; }
+.animate-slide-in { animation: slideIn 0.3s ease forwards; }
+.animate-pulse-glow { animation: pulse-glow 2s infinite; }
+
+/* ─── Stagger children ───────────────────────────────────── */
+.stagger > *:nth-child(1) { animation-delay: 0ms; }
+.stagger > *:nth-child(2) { animation-delay: 60ms; }
+.stagger > *:nth-child(3) { animation-delay: 120ms; }
+.stagger > *:nth-child(4) { animation-delay: 180ms; }
+.stagger > *:nth-child(5) { animation-delay: 240ms; }
+.stagger > *:nth-child(6) { animation-delay: 300ms; }
