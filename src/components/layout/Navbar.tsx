@@ -42,11 +42,11 @@ export function Navbar() {
                   {session.user?.name?.[0]?.toUpperCase() || "U"}
                 </div>
                 <span className="text-sm text-[#e2e0ff]">{session.user?.name || "User"}</span>
-                <span className={cn("badge text-[10px]", {
-                  "badge-free": session.user?.plan === "FREE",
-                  "badge-pro": session.user?.plan === "PRO",
-                  "badge-boss": session.user?.plan === "BOSS",
-                })}>
+                <span className={`badge text-[10px] ${
+  session.user?.plan === "FREE" ? "badge-free" :
+  session.user?.plan === "PRO" ? "badge-pro" :
+  session.user?.plan === "BOSS" ? "badge-boss" : ""
+}`}>
                   {session.user?.plan}
                 </span>
                 <ChevronDown className="w-3.5 h-3.5 text-[#7070a0]" />
